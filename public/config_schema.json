@@ -1,0 +1,6 @@
+{
+  "CPU_FREQ_MHZ": { "type": "number", "default": 200, "description": "CPU frequency in MHz" },
+  "ENABLE_LOW_POWER_MODE": { "type": "boolean", "default": false, "description": "Enable low power mode" },
+  "UART_BAUDRATE": { "type": "number", "default": 115200, "description": "UART baud rate" },
+  "LOG_LEVEL": { "type": "string", "default": "INFO", "description": "Logging level (DEBUG|INFO|WARN|ERROR)" }
+}
