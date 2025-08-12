@@ -96,13 +96,17 @@ function generateCHeader(): string {
   })
   
   const raw = lines.join('\n')
-  
+  return raw
+}
+
+function getPreviewHeaderCode(raw: string): string {
   // Apply syntax highlighting with proper HTML escaping
   return escapeHtml(raw)
-    .replace(/(\/\/.*$)/gm, '<span class="comment">$1</span>')
-    .replace(/(#pragma|#define|#ifndef|#endif)/gm, '<span class="keyword">$1</span>')
-    .replace(/&quot;([^&]*)&quot;/gm, '<span class="string">&quot;$1&quot;</span>')
-    .replace(/\b(\d+)\b/gm, '<span class="number">$1</span>')
+      .replace(/(\/\/.*$)/gm, '<span class="comment">$1</span>')
+      .replace(/(#pragma|#define|#ifndef|#endif)/gm, '<span class="keyword">$1</span>')
+      .replace(/&quot;([^&]*)&quot;/gm, '<span class="string">&quot;$1&quot;</span>')
+      .replace(/\b(\d+)\b/gm, '<span class="number">$1</span>')
+
 }
 
 function escapeHtml(text: string): string {
@@ -197,7 +201,7 @@ function isValidCIdentifier(name: string): boolean {
         {showPreview() && (
           <div style="width:600px; flex-shrink:0;">
             <h3>Generated C header preview</h3>
-            <pre style="white-space:pre-wrap; background: #1e1e1e; padding:10px; border-radius:6px; height:520px; overflow:auto" innerHTML={generateCHeader()}/>
+            <pre style="white-space:pre-wrap; background: #1e1e1e; padding:10px; border-radius:6px; height:520px; overflow:auto" innerHTML={getPreviewHeaderCode(generateCHeader())}/>
           </div>
         )}
       </div>
